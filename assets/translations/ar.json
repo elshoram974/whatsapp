@@ -1,0 +1,19 @@
+{
+  "appName": "واتساب",
+  "tab_chats": "الدردشات",
+  "tab_stories": "الحالات",
+  "menu_settings": "الإعدادات",
+  "search_hint": "ابحث",
+  "type_message": "اكتب رسالة",
+  "you": "أنت",
+  "last_seen": "آخر ظهور {time}",
+  "unread_count": "{count} غير مقروءة",
+  "send": "إرسال",
+  "story_my": "حالتي",
+  "settings_language": "اللغة",
+  "settings_language_note": "تبديل لغة التطبيق",
+  "language_en": "الإنجليزية",
+  "language_ar": "العربية",
+  "messages_count": "{howMany, plural, one {رسالة #} other {# رسائل}}",
+  "greet_gender": "{gender, select, male {مرحبًا سيدي} female {مرحبًا سيدتي} other {مرحبًا}}"
+}

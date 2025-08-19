@@ -1,0 +1,32 @@
+name: whatsapp
+description: "WhatsApp-style app (Home, Chat, Stories)"
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^9.0.0
+  equatable: ^2.0.5
+  go_router: ^14.2.0
+  easy_localization: ^3.0.7
+  cached_network_image: ^3.3.1
+  collection: ^1.18.0
+  logger: ^2.3.0
+  intl: ^0.20.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  very_good_analysis: ^6.0.0
+  golden_toolkit: ^0.15.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/mock/
+    - assets/translations/

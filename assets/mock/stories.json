@@ -1,0 +1,28 @@
+[
+  {
+    "id":"u1_s1",
+    "user":"Ahmed Ali",
+    "avatar":"assets/images/avatars/1.png",
+    "media":[
+      {"url":"assets/images/stories/s1_1.jpg","type":"image","durationMs":3000},
+      {"url":"assets/images/stories/s1_2.jpg","type":"image","durationMs":3000}
+    ]
+  },
+  {
+    "id":"u1_s2",
+    "user":"Ahmed Ali",
+    "avatar":"assets/images/avatars/1.png",
+    "media":[
+      {"url":"assets/images/stories/s1_2.jpg","type":"image","durationMs":2500}
+    ]
+  },
+  {
+    "id":"u2_s1",
+    "user":"Sara",
+    "avatar":"assets/images/avatars/2.png",
+    "media":[
+      {"url":"assets/images/stories/s1_1.jpg","type":"image","durationMs":2800},
+      {"url":"assets/images/stories/s1_2.jpg","type":"image","durationMs":2800}
+    ]
+  }
+]

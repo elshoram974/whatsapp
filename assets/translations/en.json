@@ -1,0 +1,19 @@
+{
+  "appName": "WhatsApp",
+  "tab_chats": "Chats",
+  "tab_stories": "Stories",
+  "menu_settings": "Settings",
+  "search_hint": "Search",
+  "type_message": "Message",
+  "you": "You",
+  "last_seen": "last seen {time}",
+  "unread_count": "{count} unread",
+  "send": "Send",
+  "story_my": "My status",
+  "settings_language": "Language",
+  "settings_language_note": "Switch app language",
+  "language_en": "English",
+  "language_ar": "Arabic",
+  "messages_count": "{howMany, plural, one {# message} other {# messages}}",
+  "greet_gender": "{gender, select, male {Hi sir} female {Hi ma'am} other {Hi}}"
+}

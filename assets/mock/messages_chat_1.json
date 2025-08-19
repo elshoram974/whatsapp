@@ -1,0 +1,4 @@
+[
+  {"id":"m1","chatId":"1","fromMe":false,"text":"Hi","time":"2025-08-18T16:00:00Z"},
+  {"id":"m2","chatId":"1","fromMe":true,"text":"Hello","time":"2025-08-18T16:01:00Z"}
+]
