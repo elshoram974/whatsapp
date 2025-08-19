@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:whatsapp/features/stories/domain/entities/story.dart';
@@ -98,7 +99,7 @@ class _StoryViewerPageState extends State<StoryViewerPage> with TickerProviderSt
               final showIndex = (i == _userIndex) ? _mediaIndex : 0;
               return Stack(children: [
                 Positioned.fill(
-                  child: Image.asset(u.media[showIndex].url, fit: BoxFit.cover),
+                  child: CachedNetworkImage(imageUrl: u.media[showIndex].url, fit: BoxFit.cover),
                 ),
                 Positioned.fill(
                   child: Hero(tag: 'story-user-${u.user}', child: const ColoredBox(color: Colors.transparent)),
@@ -137,7 +138,7 @@ class _StoryViewerPageState extends State<StoryViewerPage> with TickerProviderSt
                   const SizedBox(height: 8),
                   Row(
                     children: [
-                      CircleAvatar(radius: 14, backgroundImage: AssetImage(_currentUser.avatar)),
+                      CircleAvatar(radius: 14, backgroundImage: CachedNetworkImageProvider(_currentUser.avatar)),
                       const SizedBox(width: 8),
                       Text(_currentUser.user, style: const TextStyle(color: Colors.white, fontSize: 14)),
                     ],

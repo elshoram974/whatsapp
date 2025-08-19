@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -44,11 +45,17 @@ class _StoriesPageState extends State<StoriesPage> {
                         final u = items[i];
                         return ListTile(
                           leading: Hero(
-                              tag: 'story-user-${u.user}',
-                              child: CircleAvatar(
-                                  backgroundImage: AssetImage(u.avatar),),),
-                          title: Text(u.user,
-                              maxLines: 1, overflow: TextOverflow.ellipsis,),
+                            tag: 'story-user-${u.user}',
+                            child: CircleAvatar(
+                              backgroundImage:
+                                  CachedNetworkImageProvider(u.avatar),
+                            ),
+                          ),
+                          title: Text(
+                            u.user,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                           subtitle: Text('${u.media.length}'),
                           onTap: () => GoRouter.of(context).pushNamed(
                             'storyViewer',

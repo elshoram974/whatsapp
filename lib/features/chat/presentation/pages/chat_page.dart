@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -57,7 +58,7 @@ class _ChatPageState extends State<ChatPage> {
                 child: CircleAvatar(
                   radius: 18,
                   backgroundImage: (_meta?.avatar != null)
-                      ? AssetImage(_meta!.avatar)
+                      ? CachedNetworkImageProvider(_meta!.avatar)
                       : null,
                   child: (_meta?.avatar == null)
                       ? const Icon(Icons.person, color: Colors.white)
