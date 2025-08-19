@@ -2,8 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:whatsapp/features/stories/presentation/cubit/stories_cubit.dart';
 import 'package:whatsapp/features/stories/domain/entities/story_viewer_args.dart';
+import 'package:whatsapp/features/stories/presentation/cubit/stories_cubit.dart';
 
 class StoriesPage extends StatefulWidget {
   const StoriesPage({super.key});
@@ -46,9 +46,9 @@ class _StoriesPageState extends State<StoriesPage> {
                           leading: Hero(
                               tag: 'story-user-${u.user}',
                               child: CircleAvatar(
-                                  backgroundImage: AssetImage(u.avatar))),
+                                  backgroundImage: AssetImage(u.avatar),),),
                           title: Text(u.user,
-                              maxLines: 1, overflow: TextOverflow.ellipsis),
+                              maxLines: 1, overflow: TextOverflow.ellipsis,),
                           subtitle: Text('${u.media.length}'),
                           onTap: () => GoRouter.of(context).pushNamed(
                             'storyViewer',
@@ -60,8 +60,9 @@ class _StoriesPageState extends State<StoriesPage> {
                       },
                     );
                   }
-                  if (state is StoriesError)
+                  if (state is StoriesError) {
                     return Center(child: Text(state.message));
+                  }
                   return const Center(child: CircularProgressIndicator());
                 },
               ),

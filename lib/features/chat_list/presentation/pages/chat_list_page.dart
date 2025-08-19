@@ -78,7 +78,7 @@ final List<HomeDataModel> _list = [
 
 class HomeDataModel {
   const HomeDataModel(
-      {required this.label, required this.icon, required this.screen});
+      {required this.label, required this.icon, required this.screen,});
 
   final String label;
   final IconData icon;

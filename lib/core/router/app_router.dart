@@ -15,10 +15,10 @@ import 'package:whatsapp/features/chat_list/presentation/cubit/chat_list_cubit.d
 import 'package:whatsapp/features/chat_list/presentation/pages/chat_list_page.dart';
 import 'package:whatsapp/features/stories/data/repositories/stories_repository_impl.dart';
 import 'package:whatsapp/features/stories/data/sources/local_stories_source.dart';
+import 'package:whatsapp/features/stories/domain/entities/story_viewer_args.dart';
 import 'package:whatsapp/features/stories/domain/usecases/get_user_stories.dart';
 import 'package:whatsapp/features/stories/presentation/cubit/stories_cubit.dart';
 import 'package:whatsapp/features/stories/presentation/pages/stories_page.dart';
-import 'package:whatsapp/features/stories/domain/entities/story_viewer_args.dart';
 import 'package:whatsapp/features/stories/presentation/pages/story_viewer_page.dart';
 
 final GoRouter appRouter = GoRouter(
