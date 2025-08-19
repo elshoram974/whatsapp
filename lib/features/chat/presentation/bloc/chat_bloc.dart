@@ -12,12 +12,17 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     on<ChatOpened>(_onOpen);
     on<ChatSend>(_onSend);
   }
-  final GetMessages _get; final SendMessage _send;
+  final GetMessages _get;
+  final SendMessage _send;
 
   Future<void> _onOpen(ChatOpened e, Emitter<ChatState> emit) async {
-    emit(state.copyWith(loading: true));
-    final items = await _get(e.chatId);
-    emit(state.copyWith(loading: false, items: items));
+    emit(state.copyWith(loading: true, error: null));
+    try {
+      final items = await _get(e.chatId);
+      emit(state.copyWith(loading: false, items: items));
+    } catch (err) {
+      emit(state.copyWith(loading: false, error: err.toString(), items: const []));
+    }
   }
 
   Future<void> _onSend(ChatSend e, Emitter<ChatState> emit) async {

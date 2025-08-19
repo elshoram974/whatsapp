@@ -33,8 +33,10 @@ class _ChatPageState extends State<ChatPage> {
   Future<void> _loadMeta() async {
     try {
       final list = await LocalChatListSource().read();
-      final found = list.firstWhere((e) => e.id == widget.chatId,
-          orElse: () => throw Exception('not found'),);
+      final found = list.firstWhere(
+        (e) => e.id == widget.chatId,
+        orElse: () => throw Exception('not found'),
+      );
       if (!mounted) return;
       setState(() => _meta = found.toDomain());
     } catch (_) {/* تجاهل */}
@@ -50,8 +52,9 @@ class _ChatPageState extends State<ChatPage> {
           title: Row(
             children: [
               IconButton(
-                  icon: const Icon(Icons.arrow_back),
-                  onPressed: () => context.pop(),),
+                icon: const Icon(Icons.arrow_back),
+                onPressed: () => context.pop(),
+              ),
               const SizedBox(width: 4),
               Hero(
                 tag: 'chat-avatar-${widget.chatId}',
@@ -78,44 +81,60 @@ class _ChatPageState extends State<ChatPage> {
           ),
         ),
         body: SafeArea(
-          child: Column(children: [
-            Expanded(
-              child: BlocListener<ChatBloc, ChatState>(
-                listenWhen: (p, n) => n.insertedKey != null,
-                listener: (_, s) =>
-                    _listKey.currentState?.insertItem(s.items.length - 1),
-                child: BlocBuilder<ChatBloc, ChatState>(
-                  builder: (_, s) {
-                    if (s.loading) {
-                      return const Center(child: CircularProgressIndicator());
-                    }
-                    return AnimatedList(
-                      key: _listKey,
-                      initialItemCount: s.items.length,
-                      reverse: true,
-                      padding: const EdgeInsets.symmetric(vertical: 8),
-                      itemBuilder: (context, index, animation) {
-                        final item = s.items.reversed.toList()[index];
-                        return SizeTransition(
-                            sizeFactor: animation,
-                            child: MessageBubble(item: item),);
-                      },
-                    );
-                  },
+          child: Column(
+            children: [
+              Expanded(
+                child: BlocListener<ChatBloc, ChatState>(
+                  listenWhen: (p, n) => n.insertedKey != null,
+                  listener: (_, s) =>
+                      _listKey.currentState?.insertItem(s.items.length - 1),
+                  child: BlocBuilder<ChatBloc, ChatState>(
+                    builder: (_, s) {
+                      if (s.loading)
+                        return const Center(child: CircularProgressIndicator());
+                      if (s.error != null) {
+                        return Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(16),
+                            child: Text(
+                              s.error!,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(color: Colors.red),
+                            ),
+                          ),
+                        );
+                      }
+                      if (s.items.isEmpty) {
+                        return const Center(child: Text('No messages'));
+                      }
+                      return AnimatedList(
+                        key: _listKey,
+                        initialItemCount: s.items.length,
+                        reverse: true,
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        itemBuilder: (context, index, animation) {
+                          final item = s.items.reversed.toList()[index];
+                          return SizeTransition(
+                              sizeFactor: animation,
+                              child: MessageBubble(item: item));
+                        },
+                      );
+                    },
+                  ),
                 ),
               ),
-            ),
-            _InputBar(
-              controller: _controller,
-              onSend: (text) {
-                if (text.trim().isEmpty) return;
-                context
-                    .read<ChatBloc>()
-                    .add(ChatSend(widget.chatId, text.trim()));
-                _controller.clear();
-              },
-            ),
-          ],),
+              _InputBar(
+                controller: _controller,
+                onSend: (text) {
+                  if (text.trim().isEmpty) return;
+                  context
+                      .read<ChatBloc>()
+                      .add(ChatSend(widget.chatId, text.trim()));
+                  _controller.clear();
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -133,24 +152,26 @@ class _InputBar extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-              child: TextField(
-            controller: controller,
-            textInputAction: TextInputAction.send,
-            decoration: InputDecoration(
-              hintText: 'type_message'.tr(),
-              filled: true,
-              fillColor: Theme.of(context).cardColor,
-              border: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(24)),
-                borderSide: BorderSide.none,
+            child: TextField(
+              controller: controller,
+              textInputAction: TextInputAction.send,
+              decoration: InputDecoration(
+                hintText: 'type_message'.tr(),
+                filled: true,
+                fillColor: Theme.of(context).cardColor,
+                border: const OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(24)),
+                  borderSide: BorderSide.none,
+                ),
               ),
             ),
-          ),),
+          ),
           const SizedBox(width: 8),
           IconButton(
-              icon: const Icon(Icons.send),
-              color: AppColors.whatsappGreen,
-              onPressed: () => onSend(controller.text),),
+            icon: const Icon(Icons.send),
+            color: AppColors.whatsappGreen,
+            onPressed: () => onSend(controller.text),
+          ),
         ],
       ),
     );
