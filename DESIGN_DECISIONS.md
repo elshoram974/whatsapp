@@ -1,4 +1,0 @@
-- No builders or code generation. No Freezed, no Json Serializable, no go_router_builder.
-- Manual models with fromJson/toJson where needed.
-- go_router configured with classic GoRoute entries and named routes.
-- Clean Architecture folders: domain/data/presentation.

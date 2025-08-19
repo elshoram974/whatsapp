@@ -1,23 +1,38 @@
-# WhatsApp-Style Flutter App (No codegen, plain go_router)
+# WhatsApp UI Clone (Flutter)
 
-Clean Architecture, `flutter_bloc`, plain `go_router` (no typed routes), `easy_localization`, local JSON mocks, and tests.
+## Summary
+A WhatsApp-style UI built with Flutter. Goal: reproduce core screens with high fidelity using local mock data to demonstrate user flow.
 
-## Run
-1. `flutter pub get`
-2. `flutter run`
+## Implemented Screens
+- **Chat List:** name, last message, time, and unread badge.
+- **Chat:** sent and received bubbles with timestamps, input field, and send action.
+- **Stories:** contacts list with a story count per contact.
+- **Story Viewer:** full-screen image with a top progress indicator.
 
-## Lint and tests
-- `flutter analyze`
-- `flutter test`
+## Tech
+- Flutter and Dart.
+- Local mock data under `assets`.
+- Responsive layouts for multiple screen sizes.
+- Light and dark themes.
 
-## Routes
-- `/` (Home)
-- `/chat/:chatId` (Chat)
-- `/stories` (Stories)
-- `/stories/:storyId` (Story Viewer)
+## Run Locally
+1. Install Flutter (stable channel).
+2. From the project root:
+   ```bash
+   flutter pub get
+   flutter run
+   ```
 
-Deep links:
-- Android intent-filter and iOS URL scheme `myapp`.
+## Screenshots
 
-## Localization
-- `easy_localization` JSON files in `assets/translations/{en,ar}.json`
+![Screenshot 1](screenshots/01.png)
+![Screenshot 2](screenshots/02.png)
+![Screenshot 3](screenshots/03.png)
+![Screenshot 4](screenshots/04.png)
+![Screenshot 5](screenshots/05.png)
+
+---
+
+**Notes**  
+- Images are for README illustration only.  
+- Mock data can be replaced with a real backend or Firebase later.
